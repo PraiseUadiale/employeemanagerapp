@@ -24,19 +24,24 @@
               <a href=""><img src="{{employee?.imageUrl}}" alt="" class="img-fluid rounded-circle w-60"></a>
            </div>
            <div class="col-6 card-title align-self-center mb-0">
-              <h5>{{employee?.name}}</h5>
+              <h5>{{employee?.fullName}}</h5>
               <p class="m-0">{{employee?.jobTitle}}</p>
            </div>
         </div>
         <ul class="list-group list-group-flush">
            <li class="list-group-item"><i class="fa fa-envelope float-right"></i>{{employee?.email}}</li>
-           <li class="list-group-item"><i class="fa fa-phone float-right"></i>Phone : {{employee?.phone}}</li>
+           <li class="list-group-item"><i class="fa fa-phone float-right"></i>Phone : {{employee?.phoneNumber}}</li>
         </ul>
         <div class="card-body">
            <div class="float-right btn-group btn-group-sm">
               <a (click)="onOpenModal(employee, 'edit')" class="btn btn-primary tooltips" data-placement="top" data-original-title="Edit"><i class="fa fa-pencil"></i> </a>
               <a (click)="onOpenModal(employee, 'delete')" class="btn btn-secondary tooltips" data-placement="top" data-original-title="Delete"><i class="fa fa-times"></i></a>
            </div>
+           <ul class="social-links list-inline mb-0">
+            <li class="list-inline-item"><a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="" data-original-title="Facebook"><i class="fa fa-facebook-f"></i></a></li>
+            <li class="list-inline-item"><a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="" data-original-title="Twitter"><i class="fa fa-twitter"></i></a></li>
+            <li class="list-inline-item"><a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="" data-original-title="Skype"><i class="fa fa-skype"></i></a></li>
+        </ul>
         </div>
      </div>
   </div>
@@ -89,7 +94,7 @@
   <div class="modal-dialog" role="document">
      <div class="modal-content">
         <div class="modal-header">
-           <h5 class="modal-title" id="updateEmployeeModalLabel">Edit Employee {{editEmployee?.name}}</h5>
+           <h5 class="modal-title" id="updateEmployeeModalLabel">Edit Employee {{editEmployee?.fullName}}</h5>
            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
            <span aria-hidden="true">&times;</span>
            </button>
@@ -98,7 +103,7 @@
            <form #editForm="ngForm">
               <div class="form-group">
                  <label for="name">Name</label>
-                 <input type="text" ngModel="{{editEmployee?.name}}" name="name" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Name">
+                 <input type="text" ngModel="{{editEmployee?.fullName}}" name="name" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Name">
               </div>
               <input type="hidden" ngModel="{{editEmployee?.id}}" name="id" class="form-control" id="id" placeholder="Email">
               <input type="hidden" ngModel="{{editEmployee?.employeeCode}}" name="userCode" class="form-control" id="userCode" placeholder="Email">
@@ -112,7 +117,7 @@
               </div>
               <div class="form-group">
                  <label for="phone">Phone</label>
-                 <input type="text" ngModel="{{editEmployee?.phone}}" name="phone" class="form-control" id="phone" name="phone" placeholder="Phone">
+                 <input type="text" ngModel="{{editEmployee?.phoneNumber}}" name="phone" class="form-control" id="phone" name="phone" placeholder="Phone">
               </div>
               <div class="form-group">
                  <label for="phone">Image URL</label>
@@ -139,7 +144,7 @@
            </button>
         </div>
         <div class="modal-body">
-           <p>Are you sure you want to delete employee {{deleteEmployee?.name}}?</p>
+           <p>Are you sure you want to delete employee {{deleteEmployee?.fullName}}?</p>
            <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
               <button (click)="onDeleteEmloyee(deleteEmployee?.id)" class="btn btn-danger" data-dismiss="modal">Yes</button>
